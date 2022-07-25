@@ -1,6 +1,1 @@
-{
-  "posts": [
-    { "id": 1, "text": "Hello, World", "comments": ["aaa"] },
-    { "text": "Hi", "id": 2, "comments": [] }
-  ]
-}
+{"posts":[{"id":1,"title":"First post","text":"Hello, World","comments":["kkkkk"],"reactions":{"like":0,"love":0,"hate":0}},{"text":"kkkkk","id":2},{"text":"kkkkk","id":3},"kkkkk"]}
