@@ -24,9 +24,9 @@ app.get("/", (req, res) => {
 
 // Creating a new post
 
-app.post("/", (req, res) => {
-  const newPost = req.body;
-
+app.post("/newpost", (req, res) => {
+  const newPost = req.body.text;
+  console.log(req.body.text);
   const newData = getData();
   newPost["id"] = newData.posts.length + 1;
   newData.posts.push(newPost);
