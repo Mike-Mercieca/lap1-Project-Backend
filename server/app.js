@@ -24,7 +24,7 @@ app.get("/", (req, res) => {
 
 // Creating a new post
 
-app.post("/data", (req, res) => {
+app.post("/", (req, res) => {
   const newPost = req.body;
 
   const newData = getData();
@@ -47,5 +47,12 @@ app.post("/data", (req, res) => {
     }
   });
 });
+
+// Add comments
+app.post("/comments/:id", (req, res) => {
+  const id = req.params.id;
+});
+
+// Add count reactions
 
 module.exports = app;
