@@ -50,7 +50,25 @@ app.post("/", (req, res) => {
 
 // Add comments
 app.post("/comments/:id", (req, res) => {
-  const id = req.params.id;
+  let id = req.params.id;
+  let newComment = req.body.comments;
+  let newData = getData();
+  newData.posts.forEach((post) => {
+    if (post.id == id) {
+      post.comments.push(newComment);
+    }
+  });
+
+  let myJson = JSON.stringify(newData);
+  fs.writeFileSync("../client/post.json", myJson, (err) => {
+    if (err) {
+      console.log(err);
+    } else {
+      console.log("../client/post.json");
+    }
+  });
+
+  res.redirect("/");
 });
 
 // Add count reactions
