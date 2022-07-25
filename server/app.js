@@ -59,7 +59,6 @@ app.delete("/posts/:id", (req, res) => {
     if (post.id == id) {
     console.log(currentData[post]);
     currentData.posts.splice(id - 1, 1);
-    currentData
     let myJSON = JSON.stringify(currentData, null, 2);
     fs.writeFileSync("../client/post.json", myJSON);
 

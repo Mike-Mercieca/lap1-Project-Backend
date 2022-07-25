@@ -9,10 +9,12 @@
       ]
     },
     {
-        "id": 3,
-        "title": "title number 3",
-        "text": "text for post 3",
-        "comments": []
+        "id": 2,
+        "title": "title 2",
+        "text": "text for the second post",
+        "comments": [
+          "damn i was second!"
+        ]
     },
     {
       "id": 3,
