@@ -4,9 +4,7 @@
       "id": 1,
       "title": "title 1",
       "text": "text for the first post",
-      "comments": [
-        "wow the first post!"
-      ]
+      "comments": ["wow the first post!", "does it work?"]
     },
     {
       "id": 2,
@@ -15,6 +13,12 @@
       "comments": [
         "damn i was second!"
       ]
+    },
+    {
+      "id": 3,
+      "title": "title number 3",
+      "text": "text for post 3",
+      "comments": []
     },
     {
       "id": 4,

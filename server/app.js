@@ -9,15 +9,18 @@ app.use(express.json());
 app.use(cors());
 
 
+
 //Function to get data from the file
 
-function getData () {
+function getData() {
   let data = fs.readFileSync("../client/post.json");
-  data= JSON.parse(data);
+  data = JSON.parse(data);
   return data;
 }
 
-//Function to store data in the file
+
+// Function to store data in the file
+
 function storeData(req) {
   data = getData("../client/post.json");
   data.posts.push(req);
@@ -25,15 +28,18 @@ function storeData(req) {
   fs.writeFileSync("../client/post.json", myJSON);
 }
 
-//post data to form
+
+// Post data to form
 app.get("/", (req, res) => {
   res.sendFile(path.resolve("../client/post.json"));
-})
+});
+
 
 // Adding a post to the file
 app.post("/", (req, res) => {
   data = req;
   currentData = getData();
+  
 // Function to iterate through the data to find the highest ID
   let highestId = 0;
   currentData.posts.forEach((post) => {
@@ -52,13 +58,38 @@ app.post("/", (req, res) => {
     id: id,
     title: title,
     text: text,
-    comments: []
+    comments: [],
   });
-  res.send("Job Done!")
+  res.status(201).json({
+    success: true,
+    posts: storeData,
+  });
 });
 
+// Add comments
+app.post("/comments/:id", (req, res) => {
+  let id = req.params.id;
+  let newComment = req.body.comments;
+  let newData = getData();
+  newData.posts.forEach((post) => {
+    if (post.id == id) {
+      post.comments.push(newComment);
+    }
+  });
 
-//Deleting a post
+  let myJson = JSON.stringify(newData, null, 2);
+  fs.writeFileSync("../client/post.json", myJson, (err) => {
+    if (err) {
+      console.log(err);
+    } else {
+      console.log("../client/post.json");
+    }
+  });
+
+  res.redirect("/");
+});
+
+// Deleting a post
 
 app.delete("/posts/:id", (req, res) => {
   let id = req.params.id;
@@ -66,6 +97,7 @@ app.delete("/posts/:id", (req, res) => {
 //Iterate through data to match the ID
   currentData.posts.forEach((post) => {
     if (post.id == id) {
+
 //Cut out the data with the matching ID and rewrite the file
     currentData.posts.splice(id - 1, 1);
     let myJSON = JSON.stringify(currentData, null, 2);
@@ -73,13 +105,11 @@ app.delete("/posts/:id", (req, res) => {
 
     } else{
       console.log(post);
+
     }
   });
   console.log(currentData.posts);
   res.send("Deletion Complete!");
 });
 
-
-
 module.exports = app;
-
