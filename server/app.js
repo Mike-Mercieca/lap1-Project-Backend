@@ -34,11 +34,19 @@ app.get("/", (req, res) => {
 app.post("/", (req, res) => {
   data = req;
   currentData = getData();
+
+  let highestId = 0;
+  currentData.posts.forEach((post) => {
+    if (post.id > highestId) {
+      highestId = post.id;
+    }
+  });
   
-  let id = currentData.posts.length + 1;
+  let id = highestId + 1;
   let title = req.body.title;
   let text = req.body.text;
   let comments = req.body.comments;
+
 
   storeData({
     id: id,
