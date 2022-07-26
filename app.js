@@ -30,7 +30,8 @@ function storeData(req) {
 
 //Get Homepage
 app.get("/", (req, res) => {
-  res.sendFile(path.resolve("../client/public/index.html"));
+  // res.sendFile(path.resolve("../client/public/index.html"));
+  res.send("Hello World!")
 })
 
 // Post data to form
