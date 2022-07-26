@@ -6,7 +6,8 @@
   "scripts": {
     "test": "jest --watch --verbose",
     "coverage": "jest --watch --coverage --verbose",
-    "dev": "nodemon appServer.js"
+    "dev": "nodemon appServer.js",
+    "start": "node appServer.js"
   },
   "author": "",
   "license": "ISC",
@@ -19,5 +20,8 @@
     "cors": "^2.8.5",
     "express": "^4.18.1",
     "mathjs": "^11.0.1"
+  },
+  "engines": {
+    "node": "16.x"
   }
 }

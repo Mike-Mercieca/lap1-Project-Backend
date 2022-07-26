@@ -2,7 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const fs = require("fs");
 const path = require("path");
-const posts = require("../client/public/post.json");
+// const posts = require("../client/public/post.json");
 
 const app = express();
 app.use(express.json());
