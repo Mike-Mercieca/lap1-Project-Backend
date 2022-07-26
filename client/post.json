@@ -1,70 +1,30 @@
-{
-  "posts": [
-    {
-      "id": 1,
-      "title": "First post",
-      "text": "Hello, World",
-      "comments": ["please work", "does it work?"],
-      "reactions": { "like": 0, "love": 0, "hate": 0 },
-      "githy": []
+
+      "title": "title 1",
+      "text": "text for the first post",
+      "comments": [
+        "wow the first post!"
+      ]
     },
     {
-      "title": "second title",
-      "text": "test1",
-      "comments": ["testing commenting", "testing commenting"],
-      "reaction": { "like": 0, "love": 0, "hate": 0 },
-      "githy": [],
-      "id": 2
+        "id": 2,
+        "title": "title 2",
+        "text": "text for the second post",
+        "comments": [
+          "damn i was second!"
+        ]
     },
     {
-      "title": "test 3",
-      "text": "lets see",
-      "comments": [],
-      "reaction": { "like": 0, "love": 0, "hate": 0 },
-      "githy": [],
-      "id": 3
+      "id": 3,
+      "title": "title number 3",
+      "text": "text for post 3",
+      "comments": []
     },
     {
-      "title": "test4",
-      "text": "hope this works",
-      "comments": [],
-      "reaction": { "like": 0, "love": 0, "hate": 0 },
-      "githy": [],
-      "id": 4
-    },
-    {
-      "title": "test4",
-      "text": "hope this works",
-      "comments": [],
-      "reaction": { "like": 0, "love": 0, "hate": 0 },
-      "githy": [],
-      "id": 5
-    },
-    {
-      "title": "test123",
-      "text": "aaaaaa",
-      "comments": [],
-      "reaction": { "like": 0, "love": 0, "hate": 0 },
-      "githy": [],
-      "id": 6
-    },
-    {
-      "text": "Test123",
-      "comments": [],
-      "reaction": { "like": 0, "love": 0, "hate": 0 },
-      "githy": [],
-      "id": 7
-    },
-    {
-      "text": "Test123",
-      "comments": ["comment 1"],
-      "reaction": { "like": 0, "love": 0, "hate": 0 },
-      "githy": [],
-      "id": 8
-    },
-    { "id": 9, "comments": ["teaaaaaaat"] },
-    { "id": 10, "comments": [] },
-    { "id": 11, "comments": [] },
-    { "id": 12, "comments": [] }
+      "id": 4,
+      "title": "title number 4",
+      "text": "text for post 4",
+      "comments": []
+    }
   ]
 }
+
