@@ -31,13 +31,6 @@ app.get("/", (req, res) => {
   res.sendFile(path.resolve("../client/post.json"));
 });
 
-function storeData(req) {
-  data = getData("../client/post.json");
-  data.posts.push(req);
-  let myJSON = JSON.stringify(data, null, 2);
-  fs.writeFileSync("../client/post.json", myJSON);
-}
-
 app.post("/", (req, res) => {
   data = req;
   currentData = getData();
@@ -48,7 +41,7 @@ app.post("/", (req, res) => {
   let comments = req.body.comments;
 });
 
-// adding a post to the file
+// Adding a post to the file
 app.post("/", (req, res) => {
   data = req;
   currentData = getData();
@@ -70,39 +63,30 @@ app.post("/", (req, res) => {
   });
 });
 
-// Creating a new post
+// Add comments
+app.post("/comments/:id", (req, res) => {
+  let id = req.params.id;
+  let newComment = req.body.comments;
+  let newData = getData();
+  newData.posts.forEach((post) => {
+    if (post.id == id) {
+      post.comments.push(newComment);
+    }
+  });
 
-// app.post("/", (req, res) => {
-//   const newPost = {
-//     title: req.body.ttile,
-//     text: req.body.text,
-//     comments: [],
-//     reaction: { like: 0, love: 0, hate: 0 },
-//     githy: [],
-//   };
+  let myJson = JSON.stringify(newData, null, 2);
+  fs.writeFileSync("../client/post.json", myJson, (err) => {
+    if (err) {
+      console.log(err);
+    } else {
+      console.log("../client/post.json");
+    }
+  });
 
-//   const newData = getData();
-//   newPost["id"] = newData.posts.length + 1;
-//   newData.posts.push(newPost);
+  res.redirect("/");
+});
 
-//   res.status(201).json({
-//     success: true,
-//     posts: newPost,
-//   });
-
-//   // Save new post to json file
-
-//   let myJson = JSON.stringify(newData);
-//   fs.writeFileSync("../client/post.json", myJson, (err) => {
-//     if (err) {
-//       console.log(err);
-//     } else {
-//       console.log("../client/post.json");
-//     }
-//   });
-// });
-
-//Deleting a post
+// Deleting a post
 
 app.delete("/posts/:id", (req, res) => {
   let id = req.params.id;
@@ -120,30 +104,5 @@ app.delete("/posts/:id", (req, res) => {
   console.log(currentData.posts);
   res.send("Deletion Complete!");
 });
-
-// Add count reactions
-// app.post("/reactions/:id", (req, res) => {
-//   let id = req.params.id;
-//   let newReaction = req.body.reaction;
-//   let newData = getData();
-//   newData.posts.forEach((post) => {
-//     if (post.id == id) {
-//       if (newReaction == "like") {
-//         posts["reaction"]["like"] += 1;
-//       }
-//     }
-//   });
-
-//   let myJson = JSON.stringify(newData);
-//   fs.writeFileSync("../client/post.json", myJson, (err) => {
-//     if (err) {
-//       console.log(err);
-//     } else {
-//       console.log("../client/post.json");
-//     }
-//   });
-
-//   res.redirect("/");
-// });
 
 module.exports = app;
