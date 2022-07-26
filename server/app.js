@@ -2,36 +2,40 @@ const express = require("express");
 const cors = require("cors");
 const fs = require("fs");
 const path = require("path");
-const posts = require("../client/post.json");
+const posts = require("../client/public/post.json");
 
 const app = express();
 app.use(express.json());
 app.use(cors());
+app.use(express.static("../client/public"));
+
 
 
 
 //Function to get data from the file
-
 function getData() {
-  let data = fs.readFileSync("../client/post.json");
+  let data = fs.readFileSync("../client/public/post.json");
   data = JSON.parse(data);
   return data;
 }
 
 
 // Function to store data in the file
-
 function storeData(req) {
-  data = getData("../client/post.json");
+  data = getData("../client/public/post.json");
   data.posts.push(req);
   let myJSON = JSON.stringify(data, null, 2);
-  fs.writeFileSync("../client/post.json", myJSON);
+  fs.writeFileSync("../client/public/post.json", myJSON);
 }
 
+//Get Homepage
+app.get("/", (req, res) => {
+  res.sendFile(path.resolve("../client/public/index.html"));
+})
 
 // Post data to form
-app.get("/", (req, res) => {
-  res.sendFile(path.resolve("../client/post.json"));
+app.get("/posts", (req, res) => {
+  res.sendFile(path.resolve("../client/public/post.json"));
 });
 
 
@@ -78,11 +82,11 @@ app.post("/comments/:id", (req, res) => {
   });
 
   let myJson = JSON.stringify(newData, null, 2);
-  fs.writeFileSync("../client/post.json", myJson, (err) => {
+  fs.writeFileSync("../client/public/post.json", myJson, (err) => {
     if (err) {
       console.log(err);
     } else {
-      console.log("../client/post.json");
+      console.log("../client/public/post.json");
     }
   });
 
@@ -101,7 +105,7 @@ app.delete("/posts/:id", (req, res) => {
 //Cut out the data with the matching ID and rewrite the file
     currentData.posts.splice(id - 1, 1);
     let myJSON = JSON.stringify(currentData, null, 2);
-    fs.writeFileSync("../client/post.json", myJSON);
+    fs.writeFileSync("../client/public/post.json", myJSON);
 
     } else{
       console.log(post);
