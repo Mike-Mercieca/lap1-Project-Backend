@@ -1,3 +1,5 @@
+let formData = new FormData([form]);
+
 // Giphy API
 
 //search endpoint
@@ -90,14 +92,6 @@ function pasteGif () {
         
 }
 
-
-const form = document.getElementById("postForm");
-
-
-let formData = new FormData([form]);
-
-
-let form.onsubmit = async 
 
 
 

@@ -40,6 +40,16 @@
       "title": "should be 6",
       "text": "post number 6",
       "comments": []
+    },
+    {
+      "id": 7,
+      "comments": []
+    },
+    {
+      "id": 8,
+      "title": "please work",
+      "text": "pleaseeeeeeeeeeeeeeee",
+      "comments": []
     }
   ]
 }
