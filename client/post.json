@@ -1,7 +1,4 @@
-{
-  "posts": [
-    {
-      "id": 1,
+
       "title": "title 1",
       "text": "text for the first post",
       "comments": [
@@ -30,3 +27,4 @@
     }
   ]
 }
+
