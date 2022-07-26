@@ -9,7 +9,7 @@ app.use(express.json());
 app.use(cors());
 
 
-//function to get data from file
+//Function to get data from the file
 
 function getData () {
   let data = fs.readFileSync("../client/post.json");
@@ -17,7 +17,7 @@ function getData () {
   return data;
 }
 
-//function to store data in the file
+//Function to store data in the file
 function storeData(req) {
   data = getData("../client/post.json");
   data.posts.push(req);
@@ -30,24 +30,24 @@ app.get("/", (req, res) => {
   res.sendFile(path.resolve("../client/post.json"));
 })
 
-// adding a post to the file
+// Adding a post to the file
 app.post("/", (req, res) => {
   data = req;
   currentData = getData();
-
+// Function to iterate through the data to find the highest ID
   let highestId = 0;
   currentData.posts.forEach((post) => {
     if (post.id > highestId) {
       highestId = post.id;
     }
   });
-  
+  // Allocate the data to variables
   let id = highestId + 1;
   let title = req.body.title;
   let text = req.body.text;
   let comments = req.body.comments;
 
-
+// Call storeData function to add data to the file
   storeData({
     id: id,
     title: title,
@@ -63,15 +63,16 @@ app.post("/", (req, res) => {
 app.delete("/posts/:id", (req, res) => {
   let id = req.params.id;
   let currentData = getData();
+//Iterate through data to match the ID
   currentData.posts.forEach((post) => {
     if (post.id == id) {
-    console.log(currentData[post]);
+//Cut out the data with the matching ID and rewrite the file
     currentData.posts.splice(id - 1, 1);
     let myJSON = JSON.stringify(currentData, null, 2);
     fs.writeFileSync("../client/post.json", myJSON);
 
     } else{
-      console.log("failed!")
+      console.log(post);
     }
   });
   console.log(currentData.posts);
