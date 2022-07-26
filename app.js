@@ -43,6 +43,7 @@ app.get("/posts", (req, res) => {
 app.post("/", (req, res) => {
   data = req;
   currentData = getData();
+  console.log(req.body);
   
 // Function to iterate through the data to find the highest ID
   let highestId = 0;
@@ -64,11 +65,8 @@ app.post("/", (req, res) => {
     text: text,
     comments: [],
   });
-  res.status(201).json({
-    success: true,
-    posts: storeData,
+  res.send(req.body);
   });
-});
 
 // Add comments
 app.post("/comments/:id", (req, res) => {
