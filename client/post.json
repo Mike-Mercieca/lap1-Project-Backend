@@ -10,7 +10,9 @@
       "id": 2,
       "title": "title 2",
       "text": "text for the second post",
-      "comments": ["damn i was second!"]
+      "comments": [
+        "damn i was second!"
+      ]
     },
     {
       "id": 3,
@@ -22,6 +24,18 @@
       "id": 4,
       "title": "title number 4",
       "text": "text for post 4",
+      "comments": []
+    },
+    {
+      "id": 5,
+      "title": "should be 5",
+      "text": "post number 5",
+      "comments": []
+    },
+    {
+      "id": 6,
+      "title": "should be 6",
+      "text": "post number 6",
       "comments": []
     }
   ]
