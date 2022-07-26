@@ -40,7 +40,7 @@ app.get("/posts", (req, res) => {
 
 
 // Adding a post to the file
-app.post("/", (req, res) => {
+app.post("/post", (req, res) => {
   data = req;
   currentData = getData();
   console.log(req.body);
