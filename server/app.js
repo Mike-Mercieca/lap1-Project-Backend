@@ -8,17 +8,15 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-
 //function to get data from file
 
-function getData () {
+function getData() {
   let data = fs.readFileSync("../client/post.json");
-  data= JSON.parse(data);
+  data = JSON.parse(data);
   return data;
 }
 
 // Retrive current data
-
 
 //function to store data in the file
 function storeData(req) {
@@ -28,11 +26,9 @@ function storeData(req) {
   fs.writeFileSync("../client/post.json", myJSON);
 }
 
-
 //post data to form
 app.get("/", (req, res) => {
   res.sendFile(path.resolve("../client/post.json"));
-
 });
 
 function storeData(req) {
@@ -50,26 +46,22 @@ app.post("/", (req, res) => {
   let title = req.body.title;
   let text = req.body.text;
   let comments = req.body.comments;
-
-
-})
+});
 
 // adding a post to the file
 app.post("/", (req, res) => {
   data = req;
   currentData = getData();
-  
+
   let id = currentData.posts.length + 1;
   let title = req.body.title;
   let text = req.body.text;
   let comments = req.body.comments;
 
-
   storeData({
     id: id,
     title: title,
     text: text,
-
     comments: [],
   });
   res.status(201).json({
@@ -110,33 +102,24 @@ app.post("/", (req, res) => {
 //   });
 // });
 
-    comments: []
-  });
-  res.send("Job Done!")
-});
-
-
 //Deleting a post
-
 
 app.delete("/posts/:id", (req, res) => {
   let id = req.params.id;
   let currentData = getData();
   currentData.posts.forEach((post) => {
     if (post.id == id) {
-    console.log(currentData[post]);
-    currentData.posts.splice(id - 1, 1);
-    let myJSON = JSON.stringify(currentData, null, 2);
-    fs.writeFileSync("../client/post.json", myJSON);
-
-    } else{
-      console.log("failed!")
+      console.log(currentData[post]);
+      currentData.posts.splice(id - 1, 1);
+      let myJSON = JSON.stringify(currentData, null, 2);
+      fs.writeFileSync("../client/post.json", myJSON);
+    } else {
+      console.log("failed!");
     }
   });
   console.log(currentData.posts);
   res.send("Deletion Complete!");
 });
-
 
 // Add count reactions
 // app.post("/reactions/:id", (req, res) => {
@@ -163,8 +146,4 @@ app.delete("/posts/:id", (req, res) => {
 //   res.redirect("/");
 // });
 
-
-
-
 module.exports = app;
-
