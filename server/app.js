@@ -16,9 +16,8 @@ function getData() {
   return data;
 }
 
-// Retrive current data
 
-//function to store data in the file
+// Function to store data in the file
 function storeData(req) {
   data = getData("../client/post.json");
   data.posts.push(req);
@@ -26,22 +25,14 @@ function storeData(req) {
   fs.writeFileSync("../client/post.json", myJSON);
 }
 
-//post data to form
+
+// Post data to form
 app.get("/", (req, res) => {
   res.sendFile(path.resolve("../client/post.json"));
 });
 
-app.post("/", (req, res) => {
-  data = req;
-  currentData = getData();
 
-  let id = currentData.posts.length + 1;
-  let title = req.body.title;
-  let text = req.body.text;
-  let comments = req.body.comments;
-});
-
-// Adding a post to the file
+// Adding a new post & storing to the json file
 app.post("/", (req, res) => {
   data = req;
   currentData = getData();
