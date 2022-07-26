@@ -1,1 +1,70 @@
-{"posts":[{"id":1,"title":"First post","text":"Hello, World","comments":["kkkkk"],"reactions":{"like":0,"love":0,"hate":0}},{"text":"kkkkk","id":2},{"text":"kkkkk","id":3},"kkkkk"]}
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "First post",
+      "text": "Hello, World",
+      "comments": ["please work", "does it work?"],
+      "reactions": { "like": 0, "love": 0, "hate": 0 },
+      "githy": []
+    },
+    {
+      "title": "second title",
+      "text": "test1",
+      "comments": ["testing commenting", "testing commenting"],
+      "reaction": { "like": 0, "love": 0, "hate": 0 },
+      "githy": [],
+      "id": 2
+    },
+    {
+      "title": "test 3",
+      "text": "lets see",
+      "comments": [],
+      "reaction": { "like": 0, "love": 0, "hate": 0 },
+      "githy": [],
+      "id": 3
+    },
+    {
+      "title": "test4",
+      "text": "hope this works",
+      "comments": [],
+      "reaction": { "like": 0, "love": 0, "hate": 0 },
+      "githy": [],
+      "id": 4
+    },
+    {
+      "title": "test4",
+      "text": "hope this works",
+      "comments": [],
+      "reaction": { "like": 0, "love": 0, "hate": 0 },
+      "githy": [],
+      "id": 5
+    },
+    {
+      "title": "test123",
+      "text": "aaaaaa",
+      "comments": [],
+      "reaction": { "like": 0, "love": 0, "hate": 0 },
+      "githy": [],
+      "id": 6
+    },
+    {
+      "text": "Test123",
+      "comments": [],
+      "reaction": { "like": 0, "love": 0, "hate": 0 },
+      "githy": [],
+      "id": 7
+    },
+    {
+      "text": "Test123",
+      "comments": ["comment 1"],
+      "reaction": { "like": 0, "love": 0, "hate": 0 },
+      "githy": [],
+      "id": 8
+    },
+    { "id": 9, "comments": ["teaaaaaaat"] },
+    { "id": 10, "comments": [] },
+    { "id": 11, "comments": [] },
+    { "id": 12, "comments": [] }
+  ]
+}
