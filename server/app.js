@@ -16,8 +16,6 @@ function getData() {
   return data;
 }
 
-// Retrive current data
-
 //function to store data in the file
 function storeData(req) {
   data = getData("../client/post.json");
@@ -31,16 +29,6 @@ app.get("/", (req, res) => {
   res.sendFile(path.resolve("../client/post.json"));
 });
 
-app.post("/", (req, res) => {
-  data = req;
-  currentData = getData();
-
-  let id = currentData.posts.length + 1;
-  let title = req.body.title;
-  let text = req.body.text;
-  let comments = req.body.comments;
-});
-
 // Adding a post to the file
 app.post("/", (req, res) => {
   data = req;
@@ -50,12 +38,14 @@ app.post("/", (req, res) => {
   let title = req.body.title;
   let text = req.body.text;
   let comments = req.body.comments;
+  let reactions = req.body.reactions;
 
   storeData({
     id: id,
     title: title,
     text: text,
     comments: [],
+    reactions: { like: 0, love: 0 },
   });
   res.status(201).json({
     success: true,
@@ -75,6 +65,31 @@ app.post("/comments/:id", (req, res) => {
   });
 
   let myJson = JSON.stringify(newData, null, 2);
+  fs.writeFileSync("../client/post.json", myJson, (err) => {
+    if (err) {
+      console.log(err);
+    } else {
+      console.log("../client/post.json");
+    }
+  });
+
+  res.redirect("/");
+});
+
+// Add count reactions
+app.post("/reactions/:id", (req, res) => {
+  let id = req.params.id;
+  let newReaction = req.body.reaction;
+  let newData = getData();
+  newData.posts.forEach((post) => {
+    if (post.id == id) {
+      if (newReaction == "like") {
+        posts["reaction"]["like"] += 1;
+      }
+    }
+  });
+
+  let myJson = JSON.stringify(newData);
   fs.writeFileSync("../client/post.json", myJson, (err) => {
     if (err) {
       console.log(err);
