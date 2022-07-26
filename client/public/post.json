@@ -4,7 +4,10 @@
       "id": 1,
       "title": "title 1",
       "text": "text for the first post",
-      "comments": ["wow the first post!", "does it work?"]
+      "comments": [
+        "wow the first post!",
+        "does it work?"
+      ]
     },
     {
       "id": 2,
@@ -36,6 +39,10 @@
       "id": 6,
       "title": "should be 6",
       "text": "post number 6",
+      "comments": []
+    },
+    {
+      "id": 7,
       "comments": []
     }
   ]
